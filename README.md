@@ -1,34 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Magic Button</h1>
 
-## Getting Started
+<p align="center">Magic Button merupakan sebuah platform berbasis website untuk mempermudah mahasiswa untuk bergabung kedalam video conference. Platform ini dibangun dengan stack teknologi MERN (MongoDB, Express.js, React, dan Node.js)</p>
 
-First, run the development server:
+| [Deskripsi Singkat](#deskripsi-singkat) | [User Analysis](#user-analysis) | [Lingkungan Pengembangan](#lingkungan-pengembangan) | [Diagram](#diagram) | [Fitur Umum](#fitur-umum) | [Konsep OOP](#konsep-oop) | [Tipe Desain Pengembangan](#tipe-desain-pengembangan) | [Developer dan Jobdesc](#developer-dan-jobdesc) | [Link Pendukung](#link-pendukung) |
+| :-------------------------------------: | :-----------------------------: | :-------------------------------------------------: | :-----------------: | :-----------------------: | :-----------------------: | :---------------------------------------------------: | :---------------------------------------------: | --------------------------------- |
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Deskripsi Singkat
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[`^ kembali ke atas ^`](#)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam video conference. Mahasiswa tidak perlu pusing untuk mencari link video conference yang ada di masing- masing grup kuliah atau praktikum dimana sering sekali tertimbun chat. Fitur ini menyesuaikan jadwal tiap mahasiswa dan dosen, sehingga apabila sudah waktunya kelas, mahasiswa dan dosen hanya perlu menekan satu tombol di halaman utama dan mereka akan langsung masuk ke dalam kelas online yang sudah disediakan oleh sistem. Tombol tersebut akan membawa pengguna ke dalam link video conference yang benar sesuai jadwal mereka saat itu. Fitur selanjutnya yaitu fitur history video conference yang sudah pernah dihadiri beserta link rekaman dari video conference tersebut sesuai dengan jadwal tiap mahasiswa. Terdapat pula fitur tambahan lain seperti notifikasi pengingat yang muncul setiap kelas virtual akan dimulai dan fitur presensi otomatis setiap mahasiswa mengklik tombol “Magic Button”.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## User Analysis
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+[`^ kembali ke atas ^`](#)
 
-## Learn More
+### User Story
 
-To learn more about Next.js, take a look at the following resources:
+- Saya sebagai mahasiswa, saya ingin bergabung dengan kelas virtual tanpa ribet sehingga saya dapat fokus memperhatikan materi kuliah.
+- Saya sebagai mahasiswa, saya ingin melihat kembali rekaman ulang mata kuliah secara lebih mudah dan lengkap.
+- Saya sebagai mahasiswa, saya ingin mendapat notifikasi pengingat setiap kelas virtual akan dimulai sehingga saya tidak melewatkan kelas karena lupa.
+- Saya sebagai mahasiswa, saya ingin presensi dilakukan otomatis setiap menghadiri kelas virtual sehingga saya tidak melewatkan presensi karena lupa.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Lingkungan Pengembangan
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[`^ kembali ke atas ^`](#)
 
-## Deploy on Vercel
+### Software
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Visual Studio Code
+- Postman
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Hardware
+
+### Tech Stack
+
+- Next.js (Front-end)
+- Express.js (Back-end)
+- MongoDB (DBMS)
+
+## Diagram
+
+[`^ kembali ke atas ^`](#)
+
+### Use Case Diagram
+
+### Activity Diagram
+
+### Class Diagram
+
+![Class Diagram](./public/class_diagram.png)
+
+### Entity Relationship Diagram
+
+## Fitur Umum
+
+[`^ kembali ke atas ^`](#)
+
+## Konsep OOP
+
+[`^ kembali ke atas ^`](#)
+
+## Tipe Desain Pengembangan
+
+[`^ kembali ke atas ^`](#)
+
+## Developer dan Jobdesc
+
+[`^ kembali ke atas ^`](#)
+| Nama | NIM | Role |
+| --------------------- | --------- | --------- |
+| Indra Rizky Gunawan | G64180010 | UI/UX |
+| M. Dwiki Ramdhani | G64180032 | Front-end |
+| Ihsan Firdaus | G64180054 | Front-end |
+| Sultan Fariz | G64180086 | Back-end |
+| Fathi Annaufal Soblia | G64180094 | Back-end |
+
+## Link Pendukung
+
+[`^ kembali ke atas ^`](#)
+
+### Figma
+
+`ipb.link/figma-psbo-kel-9`
+
+### Repo Back-end
+
+`https://github.com/sultanfariz/backend-magic-button`
+
+### API Docs
