@@ -1,9 +1,16 @@
-<h1 align="center">Magic Button</h1>
+<h1 align="center">Magic Button (Kelompok 9 P2)</h1>
 
 <p align="center">Magic Button merupakan sebuah platform berbasis website untuk mempermudah mahasiswa untuk bergabung kedalam video conference. Platform ini dibangun dengan stack teknologi MERN (MongoDB, Express.js, React, dan Node.js)</p>
 
-| [Deskripsi Singkat](#deskripsi-singkat) | [User Analysis](#user-analysis) | [Lingkungan Pengembangan](#lingkungan-pengembangan) | [Diagram](#diagram) | [Fitur Umum](#fitur-umum) | [Konsep OOP](#konsep-oop) | [Tipe Desain Pengembangan](#tipe-desain-pengembangan) | [Developer dan Jobdesc](#developer-dan-jobdesc) | [Link Pendukung](#link-pendukung) |
-| :-------------------------------------: | :-----------------------------: | :-------------------------------------------------: | :-----------------: | :-----------------------: | :-----------------------: | :---------------------------------------------------: | :---------------------------------------------: | --------------------------------- |
+<div align="center">
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/ihsanfir/frontend-magic-button?style=for-the-badge">
+    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ihsanfir/frontend-magic-button?style=for-the-badge">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/ihsanfir/frontend-magic-button?style=for-the-badge">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ihsanfir/frontend-magic-button?style=for-the-badge">
+</div>
+
+| [Deskripsi Singkat](#deskripsi-singkat) | [User Analysis](#user-analysis) | [Lingkungan Pengembangan](#lingkungan-pengembangan) | [Konsep OOP](#konsep-oop) | [Tipe Desain Pengembangan](#tipe-desain-pengembangan) | [Hasil dan Pembahasan](#hasil-dan-pembahasan) | [Hasil Implementasi](#hasil-implementasi) | [Developer dan Jobdesc](#developer-dan-jobdesc) | [Saran](#saran) | [Link Pendukung](#link-pendukung) |
+| :-------------------------------------: | :-----------------------------: | :-------------------------------------------------: | :-----------------------: | :---------------------------------------------------: | :-------------------------------------------: | :---------------------------------------: | :---------------------------------------------: | --------------- | --------------------------------- |
 
 ## Deskripsi Singkat
 
@@ -39,7 +46,15 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 - Express.js (Back-end)
 - MongoDB (DBMS)
 
-## Diagram
+## Konsep OOP
+
+[`^ kembali ke atas ^`](#)
+
+## Tipe Desain Pengembangan
+
+[`^ kembali ke atas ^`](#)
+
+## Hasil dan Pembahasan
 
 [`^ kembali ke atas ^`](#)
 
@@ -53,15 +68,23 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Entity Relationship Diagram
 
-## Fitur Umum
+### Arsitektur Sistem
+
+### Fungsi Utama yang Dikembangkan
+
+### Fungsi CRUD
+
+## Hasil Implementasi
 
 [`^ kembali ke atas ^`](#)
 
-## Konsep OOP
+### Screenshot Sistem
 
-[`^ kembali ke atas ^`](#)
+### Link Aplikasi
 
-## Tipe Desain Pengembangan
+Backend : https://psbo-magic-button.herokuapp.com/
+
+## Saran
 
 [`^ kembali ke atas ^`](#)
 
@@ -82,10 +105,12 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Figma
 
-`ipb.link/figma-psbo-kel-9`
+https://ipb.link/figma-psbo-kel-9
 
 ### Repo Back-end
 
-`https://github.com/sultanfariz/backend-magic-button`
+https://github.com/sultanfariz/backend-magic-button
 
 ### API Docs
+
+https://documenter.getpostman.com/view/14458184/TzXwEJLU
