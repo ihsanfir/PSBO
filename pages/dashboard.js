@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import PersistentDrawerLeft from '../components/PersistentDrawerLeft'
+import React from 'react'
 import Navbar from '../components/Navbar';
 
-export default function Home() {
-  return (
-    <Navbar />
-  );
+const Dashboard = () => {
+    return (
+        <Navbar />
+    );
 }
+ 
+export default Dashboard;
