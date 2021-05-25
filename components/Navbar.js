@@ -21,6 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccessTimeOutlinedIcon from '@material-ui/icons/AccessTimeOutlined';
 import CalendarTodayOutlinedIcon from '@material-ui/icons/CalendarTodayOutlined';
 import { profile, mainItem } from './ListItem';
+import { recordButton } from './RecordButton';
 
 function Copyright() {
   return (
@@ -190,6 +191,7 @@ export default function Dashboard() {
               <Paper className={fixedHeightPaper}>
                 <div>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique id veniam commodi hic laborum fugit dolorum totam, ea ut enim illo omnis. Laboriosam voluptatem ex excepturi provident rerum, neque facere?
+                  {recordButton}
                 </div>
               </Paper>
             </Grid>
