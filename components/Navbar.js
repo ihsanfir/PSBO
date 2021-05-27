@@ -14,27 +14,16 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccessTimeOutlinedIcon from '@material-ui/icons/AccessTimeOutlined';
 import CalendarTodayOutlinedIcon from '@material-ui/icons/CalendarTodayOutlined';
-import { profile, mainItem } from './ListItem';
-import { recordButton } from './RecordButton';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { profile, mainItem } from './ListMenu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import PropTypes from 'prop-types'
 
 const drawerWidth = 240;
 
@@ -120,9 +109,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+export default function Dashboard( {children} ) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -131,9 +120,25 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const nomi = Boolean(anchorEl);
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
+      {/* appbar */}
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
@@ -145,23 +150,53 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            IPB Magic Button
-          </Typography>
-          <IconButton color="inherit">
-            <CalendarTodayOutlinedIcon />
-          </IconButton>
-          <Typography>
-            Jumat, 21 April 2021
-          </Typography>
-          <IconButton color="inherit">
-            <AccessTimeOutlinedIcon />
-          </IconButton>
-          <Typography>
-            01:02:03
-          </Typography>
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+              IPB Magic Button
+            </Typography>
+            <IconButton color="inherit">
+              <CalendarTodayOutlinedIcon />
+            </IconButton>
+            <Typography>
+              Jumat, 21 April 2021
+            </Typography>
+            <IconButton color="inherit">
+              <AccessTimeOutlinedIcon />
+            </IconButton>
+            <Typography>
+              01:02:03
+            </Typography>
+            <div>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={nomi}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Indra Rizki Gunawan</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </div>
         </Toolbar>
       </AppBar>
+      {/* drawer */}
       <Drawer
         variant="permanent"
         classes={{
@@ -184,21 +219,15 @@ export default function Dashboard() {
         </List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer}>
+        <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
-           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique id veniam commodi hic laborum fugit dolorum totam, ea ut enim illo omnis. Laboriosam voluptatem ex excepturi provident rerum, neque facere?
-                  {recordButton}
-                </div>
-              </Paper>
-            </Grid>
-           </Grid>
+            {children}
           </Container>
-        </div>
       </main>
     </div>
   );
 }
+
+Dashboard.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
+};
