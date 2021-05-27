@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -12,8 +13,8 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import Grid from "@material-ui/core/Grid";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
-import VideoLibraryRoundedIcon from '@material-ui/icons/VideoLibraryRounded';
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
+import VideoLibraryRoundedIcon from "@material-ui/icons/VideoLibraryRounded";
 
 export const profile = (
   <div>
@@ -21,24 +22,32 @@ export const profile = (
       <ListItemIcon>
         <AccountCircleIcon />
       </ListItemIcon>
-      <ListItemText primary="Ihsan Firdaus"/>
+      <ListItemText primary="Ihsan Firdaus" />
     </ListItem>
   </div>
 );
 
 export const mainItem = (
-    <div>
+  <div>
+    <Link href="/dashboard">
+      <a>
         <ListItem button>
-            <ListItemIcon>
-                <HomeRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Beranda" />
+          <ListItemIcon>
+            <HomeRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Beranda" />
         </ListItem>
+      </a>
+    </Link>
+    <Link href="/rekaman">
+      <a>
         <ListItem button>
-            <ListItemIcon>
-                <VideoLibraryRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Rekaman" />
+          <ListItemIcon>
+            <VideoLibraryRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Rekaman" />
         </ListItem>
-    </div>
-)
+      </a>
+    </Link>
+  </div>
+);

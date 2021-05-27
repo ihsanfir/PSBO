@@ -1,11 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import PersistentDrawerLeft from '../components/PersistentDrawerLeft'
-import Navbar from '../components/Navbar';
+import Grid from "@material-ui/core/Grid"
+import LoginForm from "../components/LoginForm";
 
 export default function Home() {
   return (
-    <Navbar />
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: "100vh", backgroundColor: "#f9f9f9" }}
+    >
+      <Grid item xs={3}>
+        <LoginForm />
+      </Grid>
+    </Grid>
   );
 }
