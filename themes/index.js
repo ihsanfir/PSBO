@@ -20,6 +20,9 @@ const theme = createMuiTheme({
       default: '#f9f9f9',
     },
   },
+  typography: {
+    fontFamily: ['Poppins', 'sans-serif'].join(','),
+  },
 });
 
 export default theme;

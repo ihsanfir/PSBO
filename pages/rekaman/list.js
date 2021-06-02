@@ -1,10 +1,10 @@
 import Navbar from '../../components/Navbar';
-import Rekaman from '../../components/Rekaman';
+import ListRekaman from '../../components/ListRekaman';
 
 export default function Home() {
   return (
     <Navbar>
-      <Rekaman />
+      <ListRekaman />
     </Navbar>
   );
 }

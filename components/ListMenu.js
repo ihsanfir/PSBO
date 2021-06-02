@@ -15,6 +15,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import VideoLibraryRoundedIcon from "@material-ui/icons/VideoLibraryRounded";
+import SchoolRounded from "@material-ui/icons/SchoolRounded"
+import ListAltRounded from "@material-ui/icons/ListAltRounded"
 
 export const profile = (
   <div>
@@ -46,6 +48,26 @@ export const mainItem = (
             <VideoLibraryRoundedIcon />
           </ListItemIcon>
           <ListItemText primary="Rekaman" />
+        </ListItem>
+      </a>
+    </Link>
+    <Link href="/kehadiran">
+      <a>
+        <ListItem button>
+          <ListItemIcon>
+            <ListAltRounded />
+          </ListItemIcon>
+          <ListItemText primary="Kehadiran" />
+        </ListItem>
+      </a>
+    </Link>
+    <Link href="/jadwal">
+      <a>
+        <ListItem button>
+          <ListItemIcon>
+            <SchoolRounded />
+          </ListItemIcon>
+          <ListItemText primary="Jadwal" />
         </ListItem>
       </a>
     </Link>
