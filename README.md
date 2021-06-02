@@ -54,6 +54,10 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 [`^ kembali ke atas ^`](#)
 
+### Architectural Pattern
+
+### Design Pattern
+
 ## Hasil dan Pembahasan
 
 [`^ kembali ke atas ^`](#)
@@ -64,7 +68,7 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Class Diagram
 
-![Class Diagram](./public/class_diagram.png)
+![Class Diagram](./public/class_diagram_revisi.png)
 
 ### Entity Relationship Diagram
 
@@ -82,7 +86,9 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Link Aplikasi
 
-Backend : https://psbo-magic-button.herokuapp.com/
+Front-end : http://frontend-magic-button.vercel.app/
+
+Back-end : https://psbo-magic-button.herokuapp.com/
 
 ## Saran
 
