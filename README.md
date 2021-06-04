@@ -64,7 +64,7 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Use Case Diagram
 
-![Use Case Diagram](https://user-images.githubusercontent.com/60083946/120787220-52645380-c559-11eb-9c27-ae548d1b74b4.jpg)
+![Use Case Diagram](https://user-images.githubusercontent.com/60083946/120787993-26959d80-c55a-11eb-9561-38c3bd235899.jpg)
 
 ### Activity Diagram
 
