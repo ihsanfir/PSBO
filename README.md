@@ -67,6 +67,7 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 ![Use Case Diagram](https://user-images.githubusercontent.com/60083946/120787993-26959d80-c55a-11eb-9561-38c3bd235899.jpg)
 
 ### Activity Diagram
+![Activity Diagram](./public/activity_diagram.png)
 
 ### Class Diagram
 
@@ -75,7 +76,7 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 ### Entity Relationship Diagram
 
 ### Arsitektur Sistem
-
+![Arsitektur Diagram](./public/arsitektur.png)
 ### Fungsi Utama yang Dikembangkan
 
 ### Fungsi CRUD
