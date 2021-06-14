@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import PropTypes from "prop-types";
+import MainContent from '../../components/MainContent';
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies['auth-token']
@@ -13,7 +14,9 @@ export async function getServerSideProps(context) {
 export default function Dashboard({ user, token}) {
   return (
     <>
-      <Navbar user={user} token={token}></Navbar>
+      <Navbar user={user} token={token}>
+           <MainContent />
+      </Navbar>
     </>
   );
 }
