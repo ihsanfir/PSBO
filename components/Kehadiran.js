@@ -72,58 +72,73 @@ const headers = [
   "14",
 ];
 
-const Kehadiran = () => {
+const Kehadiran = ({ data }) => {
   const classes = useStyles();
+  console.log(data);
   return (
     <div>
-      <Card className={classes.card}>
-        <Box className={classes.header}>
-          <Typography variant="h6">Analisis Algoritme</Typography>
-        </Box>
-        <CardContent>
-          <TableContainer component={Paper} elevation={0}>
-            <Table className={classes.table} aria-label="a dense table">
-              <TableHead>
-                <TableRow>
-                  <TableCell></TableCell>
-                  {headers.map((header) => (
-                    <TableCell
-                      className={classes.tableHead}
-                      component="th"
-                      scope="row"
-                      align="center"
-                      key={header}
-                    >
-                      {header}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Kuliah</TableCell>
-                  {headers.map((header) => (
-                    <TableCell align="center" key={header}>
-                      <Box className={classes.hadir}>H</Box>
-                    </TableCell>
-                  ))}
-                </TableRow>
-                <TableRow>
-                  <TableCell>Praktikum</TableCell>
-                  {headers.map((header) => (
-                    <TableCell align="center" key={header}>
-                      <Box className={classes.tidakHadir}>TH</Box>
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </CardContent>
-      </Card>
+      {data.content.map((item) => (
+        <div key={item[0].kodeMatkul}>
+          <Card className={classes.card}>
+            <Box className={classes.header}>
+              <Typography variant="h6">{item[0].namaMatkul}</Typography>
+            </Box>
+            <CardContent>
+              <TableContainer component={Paper} elevation={0}>
+                <Table className={classes.table} aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell></TableCell>
+                      {headers.map((header) => (
+                        <TableCell
+                          className={classes.tableHead}
+                          component="th"
+                          scope="row"
+                          align="center"
+                          key={header}
+                        >
+                          {header}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>{item[0].jenisKelas == "K" && "Kuliah" || item[0].jenisKelas == "P" && "Praktikum" || item[0].jenisKelas == "R" && "Responsi" }</TableCell>
+                      {headers.map((header) => (
+                        <TableCell align="center" key={header}>
+                          {item[0].presensi[header]?.isChecked && (
+                            <Box className={classes.hadir}>H</Box>
+                          )}
+                          {!item[0].presensi[header]?.isChecked && (
+                            <Box className={classes.tidakHadir}>TH</Box>
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>{item[1].jenisKelas == "K" && "Kuliah" || item[1].jenisKelas == "P" && "Praktikum" || item[1].jenisKelas == "R" && "Responsi" }</TableCell>
+                      {headers.map((header) => (
+                        <TableCell align="center" key={header}>
+                          {item[1].presensi[header]?.isChecked && (
+                            <Box className={classes.hadir}>H</Box>
+                          )}
+                          {!item[1].presensi[header]?.isChecked && (
+                            <Box className={classes.tidakHadir}>TH</Box>
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </CardContent>
+          </Card>
+          <br />
+        </div>
+      ))}
 
-      <br />
-      <Card className={classes.card}>
+      {/* <Card className={classes.card}>
         <Box className={classes.header}>
           <Typography variant="h6">Analisis Algoritme</Typography>
         </Box>
@@ -167,7 +182,7 @@ const Kehadiran = () => {
             </Table>
           </TableContainer>
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   );
 };

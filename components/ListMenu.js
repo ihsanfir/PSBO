@@ -15,21 +15,10 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import VideoLibraryRoundedIcon from "@material-ui/icons/VideoLibraryRounded";
-import SchoolRounded from "@material-ui/icons/SchoolRounded"
-import ListAltRounded from "@material-ui/icons/ListAltRounded"
+import SchoolRounded from "@material-ui/icons/SchoolRounded";
+import ListAltRounded from "@material-ui/icons/ListAltRounded";
 
-export const profile = (
-  <div>
-    <ListItem>
-      <ListItemIcon>
-        <AccountCircleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Ihsan Firdaus" />
-    </ListItem>
-  </div>
-);
-
-export const mainItem = (
+export const mainItemUser = (
   <div>
     <Link href="/dashboard">
       <a>
@@ -41,6 +30,7 @@ export const mainItem = (
         </ListItem>
       </a>
     </Link>
+
     <Link href="/rekaman">
       <a>
         <ListItem button>
@@ -68,6 +58,42 @@ export const mainItem = (
             <SchoolRounded />
           </ListItemIcon>
           <ListItemText primary="Jadwal" />
+        </ListItem>
+      </a>
+    </Link>
+  </div>
+);
+
+export const mainItemAdmin = (
+  <div>
+    <Link href="/admin">
+      <a>
+        <ListItem button>
+          <ListItemIcon>
+            <HomeRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Beranda" />
+        </ListItem>
+      </a>
+    </Link>
+
+    <Link href="/admin/rekaman">
+      <a>
+        <ListItem button>
+          <ListItemIcon>
+            <VideoLibraryRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Rekaman" />
+        </ListItem>
+      </a>
+    </Link>
+    <Link href="/admin/meet">
+      <a>
+        <ListItem button>
+          <ListItemIcon>
+            <ListAltRounded />
+          </ListItemIcon>
+          <ListItemText primary="Meet" />
         </ListItem>
       </a>
     </Link>

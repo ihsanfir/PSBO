@@ -11,7 +11,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-const TAX_RATE = 0.07;
 
 const useStyles = makeStyles({
   table: {
@@ -35,67 +34,8 @@ const useStyles = makeStyles({
   },
 });
 
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
-
-function priceRow(qty, unit) {
-  return qty * unit;
-}
-
-function createRow(desc, qty, unit) {
-  const price = priceRow(qty, unit);
-  return { desc, qty, unit, price };
-}
-
-function subtotal(items) {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
-
-function createData(matakuliah, sks, ruangan, jam, tipe, peserta) {
-  return { matakuliah, sks, ruangan, jam, tipe, peserta };
-}
-
-const rows = [
-  createData(
-    "KOM401 - Analisis Algoritme/1",
-    "3 (2-1)",
-    "Daring",
-    "10:00 - 11:40",
-    "K",
-    "G61"
-  ),
-  createData(
-    "KOM401 - Analisis Algoritme/1",
-    "3 (2-1)",
-    "Daring",
-    "10:00 - 11:40",
-    "K",
-    "G61"
-  ),
-  createData(
-    "KOM401 - Analisis Algoritme/1",
-    "3 (2-1)",
-    "Daring",
-    "10:00 - 11:40",
-    "K",
-    "G61"
-  ),
-];
-
-// const rows = [
-//   createRow("Paperclips (Box)", 100, 1.15),
-//   createRow("Paper (Case)", 10, 45.99),
-//   createRow("Waste Basket", 2, 17.99),
-// ];
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
-const JadwalTable = () => {
+const JadwalTable = ({ data }) => {
   const classes = useStyles();
-
   return (
     <Card className={classes.card}>
       <Box className={classes.header}>
@@ -110,51 +50,42 @@ const JadwalTable = () => {
           >
             <TableHead className={classes.tableHead}>
               <TableRow>
-                <TableCell>Mata Kuliah/Kelas Paralel</TableCell>
-                <TableCell align="center">SKS</TableCell>
+                <TableCell>Mata Kuliah</TableCell>
+                <TableCell align="center">Kelas Paralel</TableCell>
                 <TableCell align="center">Ruangan</TableCell>
                 <TableCell align="center">Jam</TableCell>
                 <TableCell align="center">Tipe</TableCell>
-                <TableCell align="center">Peserta</TableCell>
               </TableRow>
             </TableHead>
-
-            <TableBody>
-              <TableRow>
-                <TableCell align="left" colSpan={6}>
-                  Senin
-                </TableCell>
-              </TableRow>
-              {rows.map((row) => (
-                <TableRow key={row.matakuliah}>
-                  <TableCell component="th" scope="row">
-                    {row.matakuliah}
+            {data.map((d) => (
+              <TableBody key={d.Hari}>
+                <TableRow>
+                  <TableCell align="left" colSpan={6}>
+                    <Box fontWeight="fontWeightBold">
+                      {d.Hari}
+                    </Box>
                   </TableCell>
-                  <TableCell align="center">{row.sks}</TableCell>
-                  <TableCell align="center">{row.ruangan}</TableCell>
-                  <TableCell align="center">{row.jam}</TableCell>
-                  <TableCell align="center">{row.tipe}</TableCell>
-                  <TableCell align="center">{row.peserta}</TableCell>
                 </TableRow>
-              ))}
-              <TableRow>
-                <TableCell align="left" colSpan={6}>
-                  Senin
-                </TableCell>
-              </TableRow>
-              {rows.map((row) => (
-                <TableRow key={row.matakuliah}>
-                  <TableCell component="th" scope="row">
-                    {row.matakuliah}
-                  </TableCell>
-                  <TableCell align="center">{row.sks}</TableCell>
-                  <TableCell align="center">{row.ruangan}</TableCell>
-                  <TableCell align="center">{row.jam}</TableCell>
-                  <TableCell align="center">{row.tipe}</TableCell>
-                  <TableCell align="center">{row.peserta}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+                {d.ListJadwal.map((row) => (
+                  <TableRow key={row.JadwalId}>
+                    <TableCell component="th" scope="row">
+                      <Box paddingLeft={2}>
+                        {row.NamaMK}
+                      </Box>
+                    </TableCell>
+                    <TableCell align="center">
+                      {row.TipeKelas}
+                      {row.KelasParalel}
+                    </TableCell>
+                    <TableCell align="center">{row.Ruang}</TableCell>
+                    <TableCell align="center">
+                      {row.JamMulai} - {row.JamSelesai}
+                    </TableCell>
+                    <TableCell align="center">{row.TipeKelas}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            ))}
           </Table>
         </TableContainer>
       </CardContent>
