@@ -13,10 +13,11 @@ import {
   FormControl,
   Paper,
   Box,
-  TextField as TextFielded
+  TextField as TextFielded,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Autocomplete } from "formik-material-ui-lab";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   card_root: {
@@ -64,23 +65,48 @@ const RecordForm = (props) => {
   };
 
   const validationSchema = Yup.object({
-    mataKuliah: Yup.object().nullable().required("kode mata kuliah wajib diisi!"),
+    mataKuliah: Yup.object()
+      .nullable()
+      .required("kode mata kuliah wajib diisi!"),
     paralel: Yup.string().required("paralel wajib diisi!"),
     link: Yup.string().required("link wajib diisi!"),
     meeting: Yup.string().required("pertemuan wajib diisi!"),
   });
 
+  const handleAddRecord = async (values, { setSubmitting }) => {
+    console.log(values);
+    await axios
+      .post(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/link/record",
+        {
+          link: values.link,
+          jadwal: "9999",
+          pertemuan: values.meeting,
+          tanggal: "2021-08-01",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer" + process.env.NEXT_PUBLIC_TOKEN_ADMIN,
+          },
+        }
+      )
+      .then((response) => {
+        // setAlertMessage({ status: 'success', message: 'sukses brou' })
+        console.log(response);
+      })
+      .catch((error) => {
+        // setAlertMessage({ status: 'error', message: 'error brou' })
+        console.log(error.response);
+      });
+    setSubmitting(true);
+  };
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          values.courseCode = values.mataKuliah.kode
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={handleAddRecord}
     >
       {({ submitForm, isSubmitting }) => (
         <Card className={classes.formRecord}>

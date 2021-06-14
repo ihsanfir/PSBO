@@ -13,10 +13,11 @@ import {
   FormControl,
   Paper,
   Box,
-  TextField as TextFielded
+  TextField as TextFielded,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Autocomplete } from "formik-material-ui-lab";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   card_root: {
@@ -38,6 +39,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const listPlatform = [
+  "Zoom",
+  "Cisco Webex",
+  "Microsoft Teams",
+  "Google Meet",
+  "Skype",
+  "Slack",
+  "Facetime",
+];
+
 const courseCodeList = [
   {
     kode: "KOM123",
@@ -53,7 +64,7 @@ const courseCodeList = [
   },
 ];
 
-const RecordForm = (props) => {
+const RecordForm = (props)  => {
   const classes = useStyles();
   const initialValues = {
     courseCode: "",
@@ -64,23 +75,46 @@ const RecordForm = (props) => {
   };
 
   const validationSchema = Yup.object({
-    mataKuliah: Yup.object().nullable().required("kode mata kuliah wajib diisi!"),
+    mataKuliah: Yup.object()
+      .nullable()
+      .required("kode mata kuliah wajib diisi!"),
     paralel: Yup.string().required("paralel wajib diisi!"),
     link: Yup.string().required("link wajib diisi!"),
     platform: Yup.string().required("platform wajib diisi!"),
   });
 
+  const handleAddVidcon = async (values, { setSubmitting }) => {
+    console.log(values);
+    await axios
+      .post(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/link/vidcon",
+        {
+          link: values.link,
+          platform: values.platform,
+          jadwal: "266766363637656",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer" + process.env.NEXT_PUBLIC_TOKEN_ADMIN,
+          },
+        }
+      )
+      .then((response) => {
+        // setAlertMessage({ status: 'success', message: 'sukses brou' })
+        console.log(response);
+      })
+      .catch((error) => {
+        // setAlertMessage({ status: 'error', message: 'error brou' })
+        console.log(error.response);
+      });
+    setSubmitting(true);
+  };
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          values.courseCode = values.mataKuliah.kode
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={handleAddVidcon}
     >
       {({ submitForm, isSubmitting }) => (
         <Card className={classes.formRecord}>
@@ -190,14 +224,15 @@ const RecordForm = (props) => {
                 </Grid>
                 <Grid item md={9}>
                   <Field
-                    component={TextField}
-                    name="platform"
-                    type="text"
+                    component={Select}
                     variant="filled"
-                    margin="normal"
-                    size="small"
+                    name="platform"
                     fullWidth
-                  />
+                  >
+                    { listPlatform.map((platform) => (
+                      <MenuItem value={platform} key={platform}>{platform}</MenuItem>
+                    ))}
+                  </Field>
                 </Grid>
               </Grid>
               <Grid item>
