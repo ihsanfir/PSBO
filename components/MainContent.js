@@ -6,73 +6,73 @@ import MainCard from './Main-card';
 import { Grid } from '@material-ui/core'
 import styles from '../styles/MainContent.module.css'
 
-const data = {
-    "Hari": "Rabu",
-    "Tanggal": "2021-06-16T00:00:00",
-    "JenisKegiatan": "Kuliah",
-    "ListJadwal": [
-        {
-            "JadwalId": 182657,
-            "KodeMK": "KOM324",
-            "NamaMK": "Pengolahan Citra Digital",
-            "TipeKelas": "K",
-            "KelasParalel": "2",
-            "JamMulai": "8:00",
-            "JamSelesai": "9:40",
-            "Ruang": "Daring",
-            "IsDaring": true,
-            "IsPresensiMandiri": true
-        },
-        {
-            "JadwalId": 182676,
-            "KodeMK": "KOM334",
-            "NamaMK": "Pengembangan Sistem Berorientasi Objek",
-            "TipeKelas": "K",
-            "KelasParalel": "2",
-            "JamMulai": "13:00",
-            "JamSelesai": "14:40",
-            "Ruang": "Daring",
-            "IsDaring": true,
-            "IsPresensiMandiri": true
-        },
-        {
-            "JadwalId": 182646,
-            "KodeMK": "KOM312",
-            "NamaMK": "Komunikasi Data dan Jaringan Komputer",
-            "TipeKelas": "P",
-            "KelasParalel": "1",
-            "JamMulai": "15:30",
-            "JamSelesai": "17:30",
-            "Ruang": "Daring",
-            "IsDaring": true,
-            "IsPresensiMandiri": true
-        }
-    ]
-}
+// const data = {
+//     "Hari": "Rabu",
+//     "Tanggal": "2021-06-16T00:00:00",
+//     "JenisKegiatan": "Kuliah",
+//     "ListJadwal": [
+//         {
+//             "JadwalId": 182657,
+//             "KodeMK": "KOM324",
+//             "NamaMK": "Pengolahan Citra Digital",
+//             "TipeKelas": "K",
+//             "KelasParalel": "2",
+//             "JamMulai": "8:00",
+//             "JamSelesai": "9:40",
+//             "Ruang": "Daring",
+//             "IsDaring": true,
+//             "IsPresensiMandiri": true
+//         },
+//         {
+//             "JadwalId": 182676,
+//             "KodeMK": "KOM334",
+//             "NamaMK": "Pengembangan Sistem Berorientasi Objek",
+//             "TipeKelas": "K",
+//             "KelasParalel": "2",
+//             "JamMulai": "13:00",
+//             "JamSelesai": "14:40",
+//             "Ruang": "Daring",
+//             "IsDaring": true,
+//             "IsPresensiMandiri": true
+//         },
+//         {
+//             "JadwalId": 182646,
+//             "KodeMK": "KOM312",
+//             "NamaMK": "Komunikasi Data dan Jaringan Komputer",
+//             "TipeKelas": "P",
+//             "KelasParalel": "1",
+//             "JamMulai": "15:30",
+//             "JamSelesai": "17:30",
+//             "Ruang": "Daring",
+//             "IsDaring": true,
+//             "IsPresensiMandiri": true
+//         }
+//     ]
+// }
 
-function getSteps() {
+function getSteps(data) {
     const waktuMulai = [];
     data['ListJadwal'].map((prop) => {
         waktuMulai.push(prop['JamMulai'].concat(" - ", prop['NamaMK']));
     });
 
-    console.log(waktuMulai);
+    // console.log(waktuMulai);
 
     return waktuMulai; //ganti jadi jam di hari itu
 }
 
-function getStepContent(step) { //step itu index
+function getStepContent(step, data) { //step itu index
     // ganti jadi main card yg dimunculin
 
     return <MainCard data={data['ListJadwal'][step]} />
 }
 
-export default function MainContent() {
+export default function MainContent({ data }) {
 //   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState(new Set());
   const [skipped, setSkipped] = React.useState(new Set());
-  const steps = getSteps();
+  const steps = getSteps(data);
 
   const handleStep = (step) => () => {
     setActiveStep(step);
@@ -93,7 +93,7 @@ export default function MainContent() {
           <div className={styles.container}>
             <Grid container direction='column' spacing={2}>
               <Grid item>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, data)}
               </Grid>
             </Grid>
           </div>
