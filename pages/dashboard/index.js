@@ -6,6 +6,13 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
+  if (!token)
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
   const user = JSON.parse(context.req.cookies["user"]);
   var tzoffset = (new Date()).getTimezoneOffset() * 70000; //offset in milliseconds
   const res = await axios.get(
@@ -26,11 +33,9 @@ export async function getServerSideProps(context) {
 
 export default function Dashboard({ user, token, data }) {
   return (
-    <>
-      <Navbar user={user} token={token}>
-        <MainContent data={data} token={token}/>
-      </Navbar>
-    </>
+    <Navbar user={user} token={token}>
+      <MainContent data={data} />
+    </Navbar>
   );
 }
 

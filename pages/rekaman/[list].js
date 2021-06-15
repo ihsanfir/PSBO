@@ -5,10 +5,18 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
+  if (!token)
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
   const user = JSON.parse(context.req.cookies["user"]);
-  console.log(context.params.list)
   const res = await axios.get(
-    process.env.NEXT_PUBLIC_BACKEND_URL + "/link/record?kodeMatkul=" + context.params.list,
+    process.env.NEXT_PUBLIC_BACKEND_URL +
+      "/link/record?kodeMatkul=" +
+      context.params.list,
     {
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +33,7 @@ export async function getServerSideProps(context) {
 export default function List({ user, token, records }) {
   return (
     <Navbar user={user} token={token}>
-      <ListRekaman records={records}/>
+      <ListRekaman records={records} />
     </Navbar>
   );
 }

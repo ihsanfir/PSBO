@@ -6,6 +6,13 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
+  if (!token)
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
   const user = JSON.parse(context.req.cookies["user"]);
   const res = await axios.get(
     process.env.NEXT_PUBLIC_BACKEND_URL + "/matkul/my",
@@ -16,7 +23,7 @@ export async function getServerSideProps(context) {
       },
     }
   );
-  const { data } = res
+  const { data } = res;
   return {
     props: { user, token, data }, // Will be passed to the page component as props
   };
