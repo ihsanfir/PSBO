@@ -46,9 +46,9 @@ keperluan perkuliahan secara synchronous.
 ![Postman Logo](./public/postman_logo.png)
 ### Hardware
 
--processor : Intel core i5-8300
--RAM : 8GB
--VGA : NVIDIA GTX 1050
+- processor : Intel core i5-8300
+- RAM : 8GB
+- VGA : NVIDIA GTX 1050
 
 ### Tech Stack
 
@@ -134,9 +134,10 @@ Back-end : https://psbo-magic-button.herokuapp.com/
 
 ## Saran
 
-Dalam sistem informasi yang kita buat mengharuskan pengguna untuk membuat akun
-baru untuk menggunakan aplikasi yang kita gunakan. Akan lebih baik bila pengguna dapat
-login menggunakan akun yang sudah tersedia dari Universitas yang mereka singgahi saat ini.
+Sistem yang kami gunakan belum mendapat rincian tentang informasi 
+pertemuan keberapa yang dihadiri oleh mahasiswa. Diharapkan untuk 
+pengembangan lebih lanjut terdapat detail spesifik tentang pertemuan 
+yang sedang dihadiri oleh mahasiswa
 
 [`^ kembali ke atas ^`](#)
 
