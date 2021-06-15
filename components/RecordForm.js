@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { TextField, Select } from "formik-material-ui";
@@ -13,6 +13,8 @@ import {
   FormControl,
   Paper,
   Box,
+  Alert,
+  AlertTitle,
   TextField as TextFielded,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,26 +41,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const courseCodeList = [
-  {
-    kode: "KOM123",
-    nama: "Analisis Algoritme",
-  },
-  {
-    kode: "KOM345",
-    nama: "Basis Data",
-  },
-  {
-    kode: "IPB400",
-    nama: "KKN-T",
-  },
-];
-
-const RecordForm = (props) => {
+const RecordForm = ({ props, schedule, token }) => {
   const classes = useStyles();
+  // const [alertMessage, setAlertMessage] = useState({ status: "", message: "" });
+  // const [showAlert, setShowAlert] = useState(false);
+  const courseCodeList = schedule.content.map((item) => {
+    return {
+      jadwalId: item.idJadwal,
+      kode: item.kodeMatkul,
+      nama: item.namaMatkul + " - " + item.jenisKelas + item.paralel,
+    };
+  });
+
   const initialValues = {
     courseCode: "",
-    paralel: "",
     link: "",
     meeting: "",
     mataKuliah: null,
@@ -68,38 +64,42 @@ const RecordForm = (props) => {
     mataKuliah: Yup.object()
       .nullable()
       .required("kode mata kuliah wajib diisi!"),
-    paralel: Yup.string().required("paralel wajib diisi!"),
     link: Yup.string().required("link wajib diisi!"),
     meeting: Yup.string().required("pertemuan wajib diisi!"),
   });
 
   const handleAddRecord = async (values, { setSubmitting }) => {
     console.log(values);
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    today.toISOString(); // "2020-06-13T18:30:00.000Z"
+    const now = String(today);
+
     await axios
       .post(
         process.env.NEXT_PUBLIC_BACKEND_URL + "/link/record",
         {
           link: values.link,
-          jadwal: "9999",
+          jadwal: values.mataKuliah.jadwalId,
           pertemuan: values.meeting,
-          tanggal: "2021-08-01",
+          tanggal: now,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer" + process.env.NEXT_PUBLIC_TOKEN_ADMIN,
+            Authorization: "Bearer " + token,
           },
         }
       )
       .then((response) => {
-        // setAlertMessage({ status: 'success', message: 'sukses brou' })
+        // setAlertMessage({ status: "success", message: "sukses brou" });
         console.log(response);
       })
       .catch((error) => {
-        // setAlertMessage({ status: 'error', message: 'error brou' })
+        // setAlertMessage({ status: "error", message: "error brou" });
         console.log(error.response);
       });
-    setSubmitting(true);
+    setSubmitting(false);
   };
 
   return (
@@ -145,32 +145,6 @@ const RecordForm = (props) => {
                         variant="filled"
                       />
                     )}
-                  />
-                </Grid>
-              </Grid>
-              <Grid
-                container
-                item
-                xs={12}
-                direction="row"
-                justify="flex-start"
-                alignItems="center"
-              >
-                <Grid item md={2}>
-                  <InputLabel htmlFor="paralel">Paralel</InputLabel>
-                </Grid>
-                <Grid item md={1}>
-                  <Typography>:</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <Field
-                    component={TextField}
-                    name="paralel"
-                    type="text"
-                    variant="filled"
-                    margin="normal"
-                    size="small"
-                    fullWidth
                   />
                 </Grid>
               </Grid>

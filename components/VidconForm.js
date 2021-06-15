@@ -49,26 +49,18 @@ const listPlatform = [
   "Facetime",
 ];
 
-const courseCodeList = [
-  {
-    kode: "KOM123",
-    nama: "Analisis Algoritme",
-  },
-  {
-    kode: "KOM345",
-    nama: "Basis Data",
-  },
-  {
-    kode: "IPB400",
-    nama: "KKN-T",
-  },
-];
-
-const RecordForm = (props)  => {
+const VidconForm = ({ props, schedule, token })  => {
   const classes = useStyles();
+  console.log(schedule)
+  const courseCodeList = schedule.content.map((item) => {
+    return {
+      jadwalId: item.idJadwal,
+      kode: item.kodeMatkul,
+      nama: item.namaMatkul + " - " + item.jenisKelas+item.paralel,
+    }
+  })
   const initialValues = {
     courseCode: "",
-    paralel: "",
     link: "",
     platform: "",
     mataKuliah: null,
@@ -78,7 +70,6 @@ const RecordForm = (props)  => {
     mataKuliah: Yup.object()
       .nullable()
       .required("kode mata kuliah wajib diisi!"),
-    paralel: Yup.string().required("paralel wajib diisi!"),
     link: Yup.string().required("link wajib diisi!"),
     platform: Yup.string().required("platform wajib diisi!"),
   });
@@ -91,12 +82,12 @@ const RecordForm = (props)  => {
         {
           link: values.link,
           platform: values.platform,
-          jadwal: "266766363637656",
+          jadwal: values.mataKuliah.jadwalId,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer" + process.env.NEXT_PUBLIC_TOKEN_ADMIN,
+            Authorization: "Bearer " + token,
           },
         }
       )
@@ -153,32 +144,6 @@ const RecordForm = (props)  => {
                         variant="filled"
                       />
                     )}
-                  />
-                </Grid>
-              </Grid>
-              <Grid
-                container
-                item
-                xs={12}
-                direction="row"
-                justify="flex-start"
-                alignItems="center"
-              >
-                <Grid item md={2}>
-                  <InputLabel htmlFor="paralel">Paralel</InputLabel>
-                </Grid>
-                <Grid item md={1}>
-                  <Typography>:</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <Field
-                    component={TextField}
-                    name="paralel"
-                    type="text"
-                    variant="filled"
-                    margin="normal"
-                    size="small"
-                    fullWidth
                   />
                 </Grid>
               </Grid>
@@ -255,4 +220,4 @@ const RecordForm = (props)  => {
   );
 };
 
-export default RecordForm;
+export default VidconForm;

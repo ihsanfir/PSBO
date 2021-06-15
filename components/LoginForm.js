@@ -64,9 +64,6 @@ const LoginForm = (props) => {
           cookies.set('user', user, {path: '/'})
         }
         
-        // console.log(token, isAdmin, user)
-        // const user = response.data.content.data;
-        
         // simpan data ke localstorage dan cookies
         setAlertMessage({ status: "success", message: "Login berhasil!" });
         localStorage.setItem("token", token);
@@ -74,7 +71,9 @@ const LoginForm = (props) => {
 
         setTimeout(() => {
           if (isAdmin) router.push("/admin")
-          router.push("/dashboard");
+          else {
+            router.push("/dashboard");
+          }
         }, 500);
       })
       .catch((error) => {
