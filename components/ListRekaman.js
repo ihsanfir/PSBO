@@ -129,15 +129,16 @@ const ListRekaman = ({ records }) => {
                   <ListItemText primary={"Pertemuan " + rek.pertemuan} />
                   <ListItemSecondaryAction>
                     <Link href={rek.link}>
-                      <Button
-                        variant="contained"
-                        size="small"
-                        href="#contained-buttons"
-                        color="primary"
-                        className={classes.btn}
-                      >
-                        {rek.paralel}
-                      </Button>
+                      <a>
+                        <Button
+                          variant="contained"
+                          size="small"
+                          color="primary"
+                          className={classes.btn}
+                        >
+                          {rek.paralel}
+                        </Button>
+                      </a>
                     </Link>
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -161,15 +162,16 @@ const ListRekaman = ({ records }) => {
                   <ListItemText primary={"Pertemuan " + rek.pertemuan} />
                   <ListItemSecondaryAction>
                     <Link href={rek.link}>
-                      <Button
-                        variant="contained"
-                        size="small"
-                        href="#contained-buttons"
-                        color="primary"
-                        className={classes.btn}
-                      >
-                        {rek.paralel}
-                      </Button>
+                      <a>
+                        <Button
+                          variant="contained"
+                          size="small"
+                          color="primary"
+                          className={classes.btn}
+                        >
+                          {rek.paralel}
+                        </Button>
+                      </a>
                     </Link>
                   </ListItemSecondaryAction>
                 </ListItem>

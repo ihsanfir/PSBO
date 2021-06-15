@@ -6,6 +6,13 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
+  if (!token)
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
   const user = JSON.parse(context.req.cookies["user"]);
   const res = await axios.get(
     process.env.NEXT_PUBLIC_BACKEND_URL + "/jadwal/my",
@@ -25,11 +32,9 @@ export async function getServerSideProps(context) {
 
 export default function Dashboard({ user, token, data }) {
   return (
-    <>
-      <Navbar user={user} token={token}>
-        <MainContent data={data} />
-      </Navbar>
-    </>
+    <Navbar user={user} token={token}>
+      <MainContent data={data} />
+    </Navbar>
   );
 }
 

@@ -6,8 +6,8 @@ const MainCard = (props) => {
         <div className={styles.container}>
             <Grid container spacing={2}>
                 <Grid item xs={1} justify='space-between' container direction='column'>
-                    <Typography variant='p'>{props.data['JamMulai']}</Typography>
-                    <Typography variant='p'>{props.data['JamSelesai']}</Typography>
+                    <Typography>{props.data['JamMulai']}</Typography>
+                    <Typography>{props.data['JamSelesai']}</Typography>
                     {/* <img src="LINE.png" className={styles.img} alt='garis' /> */}
                 </Grid>
                 <Grid item xs container direction='column' spacing={2}>
@@ -15,9 +15,9 @@ const MainCard = (props) => {
                         <Typography variant='h5'>{props.data['NamaMK']}</Typography>
                     </Grid>
                     <Grid item>
-                        <Typography variant='p'>Pertemuan 10</Typography>
+                        <Typography>Pertemuan 10</Typography>
                         <br/>
-                        <Typography variant='p'>{props.data['KodeMK']} | {props.data['TipeKelas']}{props.data['KelasParalel']}</Typography>
+                        <Typography>{props.data['KodeMK']} | {props.data['TipeKelas']}{props.data['KelasParalel']}</Typography>
                     </Grid>
                 </Grid>
                 <Grid item xs={1} justify='flex-end' alignItems='flex-end' container>

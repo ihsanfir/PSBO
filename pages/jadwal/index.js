@@ -6,6 +6,13 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
+  if (!token)
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
   const user = JSON.parse(context.req.cookies["user"]);
   const options = {
     headers: {

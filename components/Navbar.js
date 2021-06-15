@@ -123,6 +123,7 @@ export default function Navbar({ children, user, token, isAdmin }) {
   const [time, setTime] = useState(moment().format("HH:mm:ss"));
   const [day, setDay] = useState(moment().format("dddd, Do MMMM YYYY"));
   const [one, setOne] = useState(true);
+  const router = useRouter();
 
   setInterval(() => {
     if (one == true) {
@@ -157,9 +158,11 @@ export default function Navbar({ children, user, token, isAdmin }) {
 
   const handleLogout = () => {
     const cookies = new Cookies();
-    const router = useRouter();
     // delete all for logout
     localStorage.clear();
+    cookies.remove("user", null, { path: "/" });
+    cookies.remove("auth-token", null, { path: "/" });
+
     setTimeout(() => {
       router.push("/");
     }, 500);
@@ -229,7 +232,7 @@ export default function Navbar({ children, user, token, isAdmin }) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>{user.Nama}</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
         </Toolbar>
