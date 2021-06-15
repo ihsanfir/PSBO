@@ -119,9 +119,9 @@ yang dimiliki oleh mahasiswa atau dosen.
 ### Fungsi CRUD
 
 - CRUD Admin
-> Menambah Link
+1. Menambah Link
 admin dapat menambahkan link video converence yang akan digunakan mahasiswa
-> Otomatis Presensi
+2. Otomatis Presensi
 tombol join otomatis kana menginput daftar hadir mahasiswa kedalam database
 ## Hasil Implementasi
 
