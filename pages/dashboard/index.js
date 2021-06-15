@@ -14,6 +14,7 @@ export async function getServerSideProps(context) {
       },
     };
   const user = JSON.parse(context.req.cookies["user"]);
+  var tzoffset = (new Date()).getTimezoneOffset() * 70000; //offset in milliseconds
   const res = await axios.get(
     process.env.NEXT_PUBLIC_BACKEND_URL + "/jadwal/my",
     {
@@ -21,7 +22,7 @@ export async function getServerSideProps(context) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      params: { tanggal: new Date().toISOString() },
+      params: { tanggal: (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1) },
     }
   );
   const { data } = await res.data.content;
