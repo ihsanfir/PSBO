@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
-  const user = JSON.parse(context.req.cookies["user"]);
+  const user = {
+    Nama: "Admin"
+  }
   return {
     props: { user, token }, // Will be passed to the page component as props
   };
@@ -13,7 +15,7 @@ export async function getServerSideProps(context) {
 
 export default function Rekaman({ user, token }) {
   return (
-    <Navbar user={user} token={token}>
+    <Navbar user={user} token={token} isAdmin={true}>
       <RecordForm />
     </Navbar>
   );

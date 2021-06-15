@@ -46,18 +46,36 @@ const LoginForm = (props) => {
         password,
       })
       .then((response) => {
-        const user = response.data.content.data;
-        const token = user.Token;
         const cookies = new Cookies();
+        const { content } = response.data
+        let isAdmin = false
+        let token = null
+        let user = null
+        if (content?.token) {
+          // untuk admin
+          isAdmin = true;
+          token = content.token
+        }
+        else {
+          // untuk mahasiswa
+          token = content.data.Token
+          user = content.data
+          localStorage.setItem("user", JSON.stringify(user));
+          cookies.set('user', user, {path: '/'})
+        }
         
+        // console.log(token, isAdmin, user)
+        // const user = response.data.content.data;
+        
+        // simpan data ke localstorage dan cookies
         setAlertMessage({ status: "success", message: "Login berhasil!" });
-        localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
         cookies.set('auth-token', token, {path: '/'})
-        cookies.set('user', user, {path: '/'})
+
         setTimeout(() => {
+          if (isAdmin) router.push("/admin")
           router.push("/dashboard");
-        }, 2000);
+        }, 500);
       })
       .catch((error) => {
         setAlertMessage({

@@ -6,6 +6,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -24,11 +25,13 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import AccessTimeOutlinedIcon from "@material-ui/icons/AccessTimeOutlined";
 import CalendarTodayOutlinedIcon from "@material-ui/icons/CalendarTodayOutlined";
-import { mainItemUser, mainItemAdmin }  from "./ListMenu";
+import { mainItemUser, mainItemAdmin } from "./ListMenu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import PropTypes from "prop-types";
+import Cookies from "universal-cookie";
 import moment from "moment";
+import { useRouter } from "next/router";
 moment.locale("id");
 
 const drawerWidth = 240;
@@ -115,9 +118,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar({ children, user, token }) {
+export default function Navbar({ children, user, token, isAdmin }) {
   const classes = useStyles();
-  const isAdmin = false;
   const [time, setTime] = useState(moment().format("HH:mm:ss"));
   const [day, setDay] = useState(moment().format("dddd, Do MMMM YYYY"));
   const [one, setOne] = useState(true);
@@ -129,9 +131,6 @@ export default function Navbar({ children, user, token }) {
     }
   }, 1000);
 
-  // const { user, authToken } = useUserData();
-  // console.log("userNavbar: ", user);
-  // console.log("tokenNavbar: ", authToken);
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -154,6 +153,16 @@ export default function Navbar({ children, user, token }) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    const cookies = new Cookies();
+    const router = useRouter();
+    // delete all for logout
+    localStorage.clear();
+    setTimeout(() => {
+      router.push("/");
+    }, 500);
   };
 
   return (
@@ -254,8 +263,8 @@ export default function Navbar({ children, user, token }) {
           cek admin atau bukan
         */}
         <List>
-          { isAdmin && mainItemAdmin }
-          { !isAdmin && mainItemUser }
+          {isAdmin && mainItemAdmin}
+          {!isAdmin && mainItemUser}
         </List>
       </Drawer>
       <main className={classes.content}>

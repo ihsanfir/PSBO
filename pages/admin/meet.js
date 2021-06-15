@@ -6,19 +6,20 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
-  const user = JSON.parse(context.req.cookies["user"]);
-
+  const user = {
+    Nama: "Admin"
+  }
   // fetch all data jadwal
-  const res = await axios.get(
-    process.env.NEXT_PUBLIC_BACKEND_URL + "/jadwal",
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer" + process.env.NEXT_PUBLIC_TOKEN_ADMIN,
-      },
-    }
-  );
-  const schedule = await res.data;
+  // const res = await axios.get(
+  //   process.env.NEXT_PUBLIC_BACKEND_URL + "/jadwal",
+  //   {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer" + process.env.NEXT_PUBLIC_TOKEN_ADMIN,
+  //     },
+  //   }
+  // );
+  // const schedule = await res.data;
   return {
     props: { user, token }, // Will be passed to the page component as props
   };
@@ -26,7 +27,7 @@ export async function getServerSideProps(context) {
 
 export default function Meet({ user, token }) {
   return (
-    <Navbar user={user} token={token}>
+    <Navbar user={user} token={token} isAdmin={true}>
       <VidconForm />
     </Navbar>
   );

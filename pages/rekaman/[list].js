@@ -1,14 +1,14 @@
 import Navbar from "../../components/Navbar";
-import Rekaman from "../../components/Rekaman";
+import ListRekaman from "../../components/ListRekaman";
 import PropTypes from "prop-types";
-import Link from "next/link";
 import axios from "axios";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies["auth-token"];
   const user = JSON.parse(context.req.cookies["user"]);
+  console.log(context.params.list)
   const res = await axios.get(
-    process.env.NEXT_PUBLIC_BACKEND_URL + "/matkul/my",
+    process.env.NEXT_PUBLIC_BACKEND_URL + "/link/record?kodeMatkul=" + context.params.list,
     {
       headers: {
         "Content-Type": "application/json",
@@ -16,22 +16,22 @@ export async function getServerSideProps(context) {
       },
     }
   );
-  const { data } = res
+  const records = res.data;
   return {
-    props: { user, token, data }, // Will be passed to the page component as props
+    props: { user, token, records }, // Will be passed to the page component as props
   };
 }
 
-export default function Record({ user, token, data }) {
+export default function List({ user, token, records }) {
   return (
     <Navbar user={user} token={token}>
-      <Rekaman data={data} />
+      <ListRekaman records={records}/>
     </Navbar>
   );
 }
 
-Record.propTypes = {
+List.propTypes = {
   user: PropTypes.object,
   token: PropTypes.string,
-  data: PropTypes.object,
+  records: PropTypes.object,
 };

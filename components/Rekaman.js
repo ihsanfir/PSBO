@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import FolderOpenOutlinedIcon from "@material-ui/icons/FolderOpenOutlined";
 import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   rekaman: {
@@ -38,9 +39,8 @@ const RecordTypography = withStyles({
   },
 })((props) => <Typography {...props} />);
 
-const Rekaman = ({ data }) => {
+const Rekaman = ({ data, token }) => {
   const classes = useStyles();
-  console.log(data.message);
   return (
     <div>
       <CssBaseline />
@@ -53,7 +53,7 @@ const Rekaman = ({ data }) => {
       >
         {data.content.map((i) => (
           <Grid item xs={12} sm={6} md={3} key={i.KodeMK}>
-            <Link href="/rekaman/list">
+            <Link href={'/rekaman/' + i.KodeMK}>
               <a>
                 <div
                   style={{
