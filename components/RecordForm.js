@@ -110,6 +110,8 @@ const RecordForm = ({ props, schedule, token }) => {
     >
       {({ submitForm, isSubmitting }) => (
         <Card className={classes.formRecord}>
+          <Typography variant='h5'>Form Input Rekaman</Typography>
+          <br/>
           <Form {...props}>
             <Grid
               container
