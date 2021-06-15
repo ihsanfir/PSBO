@@ -29,6 +29,23 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 - Saya sebagai mahasiswa, saya ingin mendapat notifikasi pengingat setiap kelas virtual akan dimulai sehingga saya tidak melewatkan kelas karena lupa.
 - Saya sebagai mahasiswa, saya ingin presensi dilakukan otomatis setiap menghadiri kelas virtual sehingga saya tidak melewatkan presensi karena lupa.
 
+## Ruang Lingkup
+
+Aplikasi ini hanya digunakan oleh mahasiswa, dosen, dan pengurus. Digunakan untuk
+keperluan perkuliahan secara synchronous.
+
+## Metode Pengembangan
+
+Kami memilih metode prototyping karena metode ini memungkinkan pengguna dan
+pengembang untuk saling berinteraksi selama proses pembuatan sistem sehingga
+pengembang dapat memodelkan aplikasi yang akan dibuat, serta memudahkan koordinasi
+jika suatu saat terjadi perubahan pada saat proses pengembangan sistem. Selain itu, dengan
+menggunakan metode prototyping, pengembang dapat memberikan gambaran dasar kepada
+pengguna mengenai sistem yang akan dibuat serta melakukan pengujian awal, dengan begitu
+dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
+
+![metode pengembangan Diagram](./public/metode_pengembangan.png)
+
 ## Lingkungan Pengembangan
 
 [`^ kembali ke atas ^`](#)
@@ -75,6 +92,7 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Entity Relationship Diagram
 
+
 ### Arsitektur Sistem
 ![Arsitektur Diagram](./public/arsitektur.png)
 ### Fungsi Utama yang Dikembangkan
@@ -94,6 +112,10 @@ Front-end : http://frontend-magic-button.vercel.app/
 Back-end : https://psbo-magic-button.herokuapp.com/
 
 ## Saran
+
+Dalam sistem informasi yang kita buat mengharuskan pengguna untuk membuat akun
+baru untuk menggunakan aplikasi yang kita gunakan. Akan lebih baik bila pengguna dapat
+login menggunakan akun yang sudah tersedia dari Universitas yang mereka singgahi saat ini.
 
 [`^ kembali ke atas ^`](#)
 
