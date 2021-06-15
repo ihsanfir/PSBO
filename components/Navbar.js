@@ -160,8 +160,8 @@ export default function Navbar({ children, user, token, isAdmin }) {
     const cookies = new Cookies();
     // delete all for logout
     localStorage.clear();
-    cookies.remove("user", null, { path: "/" });
-    cookies.remove("auth-token", null, { path: "/" });
+    cookies.remove("user");
+    cookies.remove("auth-token");
 
     setTimeout(() => {
       router.push("/");
