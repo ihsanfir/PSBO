@@ -29,6 +29,11 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 - Saya sebagai mahasiswa, saya ingin mendapat notifikasi pengingat setiap kelas virtual akan dimulai sehingga saya tidak melewatkan kelas karena lupa.
 - Saya sebagai mahasiswa, saya ingin presensi dilakukan otomatis setiap menghadiri kelas virtual sehingga saya tidak melewatkan presensi karena lupa.
 
+## Ruang Lingkup
+
+Aplikasi ini hanya digunakan oleh mahasiswa, dosen, dan pengurus. Digunakan untuk
+keperluan perkuliahan secara synchronous.
+
 ## Lingkungan Pengembangan
 
 [`^ kembali ke atas ^`](#)
@@ -37,8 +42,13 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 - Visual Studio Code
 - Postman
-
+![Visual Studio Code Logo](./public/vsc_logo.jpg)
+![Postman Logo](./public/postman_logo.png)
 ### Hardware
+
+- processor : Intel core i5-8300
+- RAM : 8GB
+- VGA : NVIDIA GTX 1050
 
 ### Tech Stack
 
@@ -48,6 +58,9 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ## Konsep OOP
 
+konsep OOP yang kami gunakan dalam projek ini
+
+
 [`^ kembali ke atas ^`](#)
 
 ## Tipe Desain Pengembangan
@@ -56,7 +69,25 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Architectural Pattern
 
+Dalam asritekur mengembanagan website kami menggunakan 
+arsitektur Model View Controler (MVC).
+
+![MVC Diagram](./public/mvc_diagram.png)
+
+model digunakan untuk berinteraksi dengan data base
+view untuk menampilkan hasil
+controler mengatur request yang diminta oleh user
+
 ### Design Pattern
+
+Design pattern yang digunakan yaitu 
+Creational Desgin Pattern
+
+![creatinal design pattern](./public/creational_design_pattern.png)
+
+pattern ini dibagi menjadi class-creation pattern dan object-creation pattern
+dimana class-creation digunakan untuk memanggil fungsi dan 
+object-creation untuk menyelesaikan pekerjaan
 
 ## Hasil dan Pembahasan
 
@@ -75,17 +106,34 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 
 ### Entity Relationship Diagram
 
+![URL Diagram](./public/url_diagram_revisi.png)
+
 ### Arsitektur Sistem
 ![Arsitektur Diagram](./public/arsitektur.png)
 ### Fungsi Utama yang Dikembangkan
 
+fungsi utama yang kita kembangkan adalah tombol join
+untuk masuk kedalam video conference sesuai dengan jadwal 
+yang dimiliki oleh mahasiswa atau dosen.
+
 ### Fungsi CRUD
 
+- CRUD Admin
+1. Menambah Link
+admin dapat menambahkan link video converence yang akan digunakan mahasiswa
+2. Otomatis Presensi
+tombol join otomatis kana menginput daftar hadir mahasiswa kedalam database
 ## Hasil Implementasi
 
 [`^ kembali ke atas ^`](#)
 
 ### Screenshot Sistem
+
+Halaman Utama
+![Hasil implementasi](./public/hasil_implementasi_1.png)
+
+Halaman Jadwal Mahasiswa
+![Hasil implementasi](./public/hasil_implementasi_2.png)
 
 ### Link Aplikasi
 
@@ -94,6 +142,11 @@ Front-end : http://frontend-magic-button.vercel.app/
 Back-end : https://psbo-magic-button.herokuapp.com/
 
 ## Saran
+
+Sistem yang kami gunakan belum mendapat rincian tentang informasi 
+pertemuan keberapa yang dihadiri oleh mahasiswa. Diharapkan untuk 
+pengembangan lebih lanjut terdapat detail spesifik tentang pertemuan 
+yang sedang dihadiri oleh mahasiswa
 
 [`^ kembali ke atas ^`](#)
 
