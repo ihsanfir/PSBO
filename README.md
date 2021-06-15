@@ -57,6 +57,10 @@ dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
 
 ### Hardware
 
+-processor : Intel core i5-8300
+-RAM : 8GB
+-VGA : NVIDIA GTX 1050
+
 ### Tech Stack
 
 - Next.js (Front-end)
@@ -64,6 +68,8 @@ dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
 - MongoDB (DBMS)
 
 ## Konsep OOP
+
+
 
 [`^ kembali ke atas ^`](#)
 
@@ -73,7 +79,17 @@ dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
 
 ### Architectural Pattern
 
+Dalam asritekur mengembanagan website kami menggunakan 
+arsitektur Model View Controler (MVC).
+
+![MVC Diagram](./public/mvc_diagram.png)
+
 ### Design Pattern
+
+Design pattern yang digunakan yaitu 
+Creational Desgin Pattern
+
+![creatinal design pattern](./public/creational_design_pattern.png)
 
 ## Hasil dan Pembahasan
 
@@ -92,10 +108,15 @@ dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
 
 ### Entity Relationship Diagram
 
+![URL Diagram](./public/url_diagram_revisi.png)
 
 ### Arsitektur Sistem
 ![Arsitektur Diagram](./public/arsitektur.png)
 ### Fungsi Utama yang Dikembangkan
+
+fungsi utama yang kita kembangkan adalah tombol join
+untuk masuk kedalam video conference sesuai dengan jadwal 
+yang dimiliki oleh mahasiswa atau dosen.
 
 ### Fungsi CRUD
 
