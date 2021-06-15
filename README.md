@@ -34,18 +34,6 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 Aplikasi ini hanya digunakan oleh mahasiswa, dosen, dan pengurus. Digunakan untuk
 keperluan perkuliahan secara synchronous.
 
-## Metode Pengembangan
-
-Kami memilih metode prototyping karena metode ini memungkinkan pengguna dan
-pengembang untuk saling berinteraksi selama proses pembuatan sistem sehingga
-pengembang dapat memodelkan aplikasi yang akan dibuat, serta memudahkan koordinasi
-jika suatu saat terjadi perubahan pada saat proses pengembangan sistem. Selain itu, dengan
-menggunakan metode prototyping, pengembang dapat memberikan gambaran dasar kepada
-pengguna mengenai sistem yang akan dibuat serta melakukan pengujian awal, dengan begitu
-dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
-
-![metode pengembangan Diagram](./public/metode_pengembangan.png)
-
 ## Lingkungan Pengembangan
 
 [`^ kembali ke atas ^`](#)
@@ -54,7 +42,8 @@ dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
 
 - Visual Studio Code
 - Postman
-
+![Visual Studio Code Logo](./public/vsc_logo.jpg)
+![Postman Logo](./public/postman_logo.png)
 ### Hardware
 
 -processor : Intel core i5-8300
@@ -69,6 +58,7 @@ dapat dilakukan evaluasi sehingga hasil akhirnya menjadi lebih optimal.
 
 ## Konsep OOP
 
+konsep OOP yang kami gunakan dalam projek ini
 
 
 [`^ kembali ke atas ^`](#)
@@ -84,12 +74,20 @@ arsitektur Model View Controler (MVC).
 
 ![MVC Diagram](./public/mvc_diagram.png)
 
+model digunakan untuk berinteraksi dengan data base
+view untuk menampilkan hasil
+controler mengatur request yang diminta oleh user
+
 ### Design Pattern
 
 Design pattern yang digunakan yaitu 
 Creational Desgin Pattern
 
 ![creatinal design pattern](./public/creational_design_pattern.png)
+
+pattern ini dibagi menjadi class-creation pattern dan object-creation pattern
+dimana class-creation digunakan untuk memanggil fungsi dan 
+object-creation untuk menyelesaikan pekerjaan
 
 ## Hasil dan Pembahasan
 
@@ -125,6 +123,8 @@ yang dimiliki oleh mahasiswa atau dosen.
 [`^ kembali ke atas ^`](#)
 
 ### Screenshot Sistem
+
+![Hasil implementasi](./public/hasil_implementasi_1.png)
 
 ### Link Aplikasi
 
