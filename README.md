@@ -38,23 +38,27 @@ keperluan perkuliahan secara synchronous.
 
 [`^ kembali ke atas ^`](#)
 
-### Software
 
+__Software__
+```
 - Visual Studio Code
-- Postman
+- Postman 
+```
 ![Visual Studio Code Logo](./public/vsc_logo.jpg)
-![Postman Logo](./public/postman_logo.png)
-### Hardware
-
+![Postman Logo](./public/postman_logo.png)  
+__Hardware__
+```
 - processor : Intel core i5-8300
 - RAM : 8GB
 - VGA : NVIDIA GTX 1050
-
-### Tech Stack
-
+```
+__Tech Stack__
+```
 - Next.js (Front-end)
 - Express.js (Back-end)
 - MongoDB (DBMS)
+```
+---
 
 ## Konsep OOP
 
