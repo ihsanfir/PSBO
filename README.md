@@ -118,13 +118,22 @@ yang dimiliki oleh mahasiswa atau dosen.
 
 ### Fungsi CRUD
 
+- CRUD Admin
+> Menambah Link
+admin dapat menambahkan link video converence yang akan digunakan mahasiswa
+> Otomatis Presensi
+tombol join otomatis kana menginput daftar hadir mahasiswa kedalam database
 ## Hasil Implementasi
 
 [`^ kembali ke atas ^`](#)
 
 ### Screenshot Sistem
 
+Halaman Utama
 ![Hasil implementasi](./public/hasil_implementasi_1.png)
+
+Halaman Jadwal Mahasiswa
+![Hasil implementasi](./public/hasil_implementasi_2.png)
 
 ### Link Aplikasi
 
