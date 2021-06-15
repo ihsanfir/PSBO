@@ -34,7 +34,7 @@ export async function getServerSideProps(context) {
 export default function Dashboard({ user, token, data }) {
   return (
     <Navbar user={user} token={token}>
-      <MainContent data={data} />
+      <MainContent data={data} token={token}/>
     </Navbar>
   );
 }

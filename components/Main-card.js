@@ -6,6 +6,7 @@ import axios from "axios"
 const MainCard = (props) => {
     const handleSubmitPresensi = async () => {
         // alert("Lagi proses ya gan\n" + props.data['JadwalId']);
+        // console.log(props.token);
         await axios
           .post(
             process.env.NEXT_PUBLIC_BACKEND_URL + "/presensi/check",
@@ -26,7 +27,7 @@ const MainCard = (props) => {
           })
           .catch((error) => {
             alert(error.response.data.message);
-            console.log(error.response.data.message);
+            console.log(error.response);
           });
       };
 
@@ -50,9 +51,9 @@ const MainCard = (props) => {
                     </Grid>
                 </Grid>
                 <Grid item xs={1} justify='flex-end' alignItems='flex-end' container>
-                    {/* {console.log(props.data['vidcon']['link'])} */}
-                    {props.data['vidcon'][1] != null ? (
-                        <Button variant='contained' color='primary' href={props.data['vidcon'][1]} target="blank_" onClick={() => {handleSubmitPresensi()}}>Join</Button>
+                    {console.log(props.data.vidcon['link'])}
+                    {props.data.vidcon['link'] != null ? (
+                        <Button variant='contained' color='primary' href={props.data.vidcon['link']} target="blank_" onClick={() => {handleSubmitPresensi()}}>Join</Button>
                     ) : (
                         <Button variant='contained' color='primary' href="" disabled>Join</Button>
                     )}
