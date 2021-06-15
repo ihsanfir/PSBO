@@ -74,7 +74,7 @@ const headers = [
 
 const Kehadiran = ({ data }) => {
   const classes = useStyles();
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       {data.content.map((item) => (
@@ -116,19 +116,23 @@ const Kehadiran = ({ data }) => {
                         </TableCell>
                       ))}
                     </TableRow>
-                    <TableRow>
-                      <TableCell>{item[1].jenisKelas == "K" && "Kuliah" || item[1].jenisKelas == "P" && "Praktikum" || item[1].jenisKelas == "R" && "Responsi" }</TableCell>
-                      {headers.map((header) => (
-                        <TableCell align="center" key={header}>
-                          {item[1].presensi[header]?.isChecked && (
-                            <Box className={classes.hadir}>H</Box>
-                          )}
-                          {!item[1].presensi[header]?.isChecked && (
-                            <Box className={classes.tidakHadir}>TH</Box>
-                          )}
-                        </TableCell>
-                      ))}
-                    </TableRow>
+                    {item.length != 1 ? (
+                      <TableRow>
+                        <TableCell>{item[1].jenisKelas == "K" && "Kuliah" || item[1].jenisKelas == "P" && "Praktikum" || item[1].jenisKelas == "R" && "Responsi" }</TableCell>
+                        {headers.map((header) => (
+                          <TableCell align="center" key={header}>
+                            {item[1].presensi[header]?.isChecked && (
+                              <Box className={classes.hadir}>H</Box>
+                            )}
+                            {!item[1].presensi[header]?.isChecked && (
+                              <Box className={classes.tidakHadir}>TH</Box>
+                            )}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ) : (
+                      <div></div>
+                    )}
                   </TableBody>
                 </Table>
               </TableContainer>
