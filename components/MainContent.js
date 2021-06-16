@@ -35,14 +35,14 @@ export default function MainContent({ data, token }) {
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps(data);
 
-  steps.map((jamMulai, index) => {
-    const jamMulaiObj = moment(jamMulai, 'HH:mm');
-    if (moment().diff(jamMulaiObj) > 0){
-      const newCompleted = completed;
-      newCompleted[index] = true;
-      setCompleted(newCompleted);
-    }
-  });
+  // steps.map((jamMulai, index) => {
+  //   const jamMulaiObj = moment(jamMulai, 'HH:mm');
+  //   if (moment().diff(jamMulaiObj) > 0){
+  //     const newCompleted = completed;
+  //     newCompleted[index] = true;
+  //     setCompleted(newCompleted);
+  //   }
+  // });
 
   const handleStep = (step) => () => {
     setActiveStep(step);
