@@ -115,7 +115,7 @@ const LoginForm = (props) => {
                         size={14}
                       />
                       <Typography variant="body2">
-                        Wait a second, redirecting to dashboard...
+                        Tunggu sebentar, sedang diarahkan ke Dashboard
                       </Typography>
                     </Box>
                   </Box>
