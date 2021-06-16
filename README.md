@@ -70,6 +70,7 @@ keperluan perkuliahan secara synchronous.
 [`^ kembali ke atas ^`](#)
 
 **Abstraction**
+
 Abstraction adalah prinsip yang menyembunyikan detail implementasi fungsi ataupun prototype, sehingga saat pemanggilan fungsi, pengembang tidak perlu tahu cara kerja fungsi tersebut secara detail. Penerapan konsep abstraction pada aplikasi ini adalah pada fungsi middleware verifyRole(), pengembang hanya tinggal memasukkan role yg ingin diverifikasi pada parameter untuk memverifikasi apakah role tersebut sesuai dengan token auth user.
 
 **Inheritance**
@@ -96,14 +97,9 @@ Dalam mengembangkan aplikasi ini, kelompok kami menggunakan pattern MVC (Model V
 
 **Factory Pattern**
 
-Design pattern yang digunakan yaitu
-Creational Design Pattern
+![creational design pattern](./public/creational_design_pattern.png)
 
-![creatinal design pattern](./public/creational_design_pattern.png)
-
-pattern ini dibagi menjadi class-creation pattern dan object-creation pattern
-dimana class-creation digunakan untuk memanggil fungsi dan
-object-creation untuk menyelesaikan pekerjaan
+Pattern ini adalah salah satu creational design pattern yang menyediakan interface pembuatan objek pada superclass, tetapi juga membolehkan subclass untuk mengubah tipe pembuatan objek tersebut.
 
 ## Hasil dan Pembahasan
 
