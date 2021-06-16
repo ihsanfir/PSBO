@@ -12,7 +12,7 @@ const MainCard = (props) => {
             process.env.NEXT_PUBLIC_BACKEND_URL + "/presensi/check",
             {
               jadwal: props.data['JadwalId'],
-              pertemuan: 14
+              pertemuan: 10
             },
             {
               headers: {
