@@ -32,7 +32,7 @@ Magic Button merupakan fitur untuk mempermudah mahasiswa untuk masuk kedalam vid
 ## Ruang Lingkup
 
 Aplikasi ini hanya digunakan oleh mahasiswa, dosen, dan pengurus. Digunakan untuk
-keperluan perkuliahan secara synchronous.
+keperluan perkuliahan daring secara synchronous.
 
 ## Lingkungan Pengembangan
 
@@ -50,7 +50,7 @@ keperluan perkuliahan secara synchronous.
 **Hardware**
 
 ```
-- processor : Intel core i5-8300
+- Processor : Intel core i5-8300
 - RAM : 8GB
 - VGA : NVIDIA GTX 1050
 ```
@@ -99,7 +99,9 @@ Dalam mengembangkan aplikasi ini, kelompok kami menggunakan pattern MVC (Model V
 
 ![creational design pattern](./public/creational_design_pattern.png)
 
-Pattern ini adalah salah satu creational design pattern yang menyediakan interface pembuatan objek pada superclass, tetapi juga membolehkan subclass untuk mengubah tipe pembuatan objek tersebut.
+Pattern ini adalah salah satu creational design pattern yang menyediakan interface pembuatan objek pada superclass, tetapi juga membolehkan subclass untuk mengubah tipe pembuatan objek tersebut. Penerapannya dalam aplikasi ini terletak pada method createLink pada superclass Link yang diwariskan kepada subclass Record dan Vidcon, namun kedua subclass tersebut dapat memiliki pendekatan yang berbeda dalam method pembuatan objek Link tersebut.
+
+![factory design pattern class diagram example](./public/factory_design_pattern_example.png)
 
 ## Hasil dan Pembahasan
 
@@ -146,11 +148,20 @@ yang dimiliki oleh mahasiswa atau dosen.
 
 ### Screenshot Sistem
 
+Halaman Login
+![Hasil implementasi](./public/hasil_implementasi_0.jpg)
+
 Halaman Utama
 ![Hasil implementasi](./public/hasil_implementasi_1.png)
 
 Halaman Jadwal Mahasiswa
 ![Hasil implementasi](./public/hasil_implementasi_2.png)
+
+Halaman Daftar Semua Rekaman Mata Kuliah
+![Hasil implementasi](./public/hasil_implementasi_3.png)
+
+Halaman Daftar Semua Rekaman Per Paralel
+![Hasil implementasi](./public/hasil_implementasi_4.png)
 
 ### Link Aplikasi
 
