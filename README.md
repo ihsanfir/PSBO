@@ -129,18 +129,15 @@ Pattern ini adalah salah satu creational design pattern yang menyediakan interfa
 
 ### Fungsi Utama yang Dikembangkan
 
-fungsi utama yang kita kembangkan adalah tombol join
+Fungsi utama yang dikembangkan adalah tombol join
 untuk masuk kedalam video conference sesuai dengan jadwal
-yang dimiliki oleh mahasiswa atau dosen.
+yang dimiliki oleh mahasiswa sekaligus menambahkan presensi pada jadwal tersebut.
 
 ### Fungsi CRUD
 
-- CRUD Admin
-
-1. Menambah Link
-   admin dapat menambahkan link video converence yang akan digunakan mahasiswa
-2. Otomatis Presensi
-   tombol join otomatis kana menginput daftar hadir mahasiswa kedalam database
+- CRUD Akun Admin
+- CRUD Link Rekaman
+- CRUD Link Meeting
 
 ## Hasil Implementasi
 
@@ -163,6 +160,12 @@ Halaman Daftar Semua Rekaman Mata Kuliah
 Halaman Daftar Semua Rekaman Per Paralel
 ![Hasil implementasi](./public/hasil_implementasi_4.png)
 
+Halaman Admin Insert Link Rekaman
+![Hasil implementasi](./public/hasil_implementasi_5.png)
+
+Halaman Admin Insert Link Meeting
+![Hasil implementasi](./public/hasil_implementasi_6.png)
+
 ### Link Aplikasi
 
 Front-end : http://frontend-magic-button.vercel.app/
@@ -176,7 +179,7 @@ Back-end : https://psbo-magic-button.herokuapp.com/
 Sistem yang kami gunakan belum mendapat rincian tentang informasi
 pertemuan keberapa yang dihadiri oleh mahasiswa. Diharapkan untuk
 pengembangan lebih lanjut terdapat detail spesifik tentang pertemuan
-yang sedang dihadiri oleh mahasiswa
+yang sedang dihadiri oleh mahasiswa. Selain itu, dapat juga ditambahkan fitur interface untuk pengguna asisten praktikum dan dosen. Implementasi dalam bentuk aplikasi mobile juga dapat menjadi domain pengembangan selanjutnya, dengan penambahan fitur notifikasi jadwal terdekat.
 
 ## Developer dan Jobdesc
 
