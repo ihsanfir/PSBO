@@ -1,39 +1,44 @@
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import MainCard from './Main-card';
-import { Grid } from '@material-ui/core'
-import styles from '../styles/MainContent.module.css'
+import React from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepButton from "@material-ui/core/StepButton";
+import MainCard from "./Main-card";
+import { Grid } from "@material-ui/core";
+import styles from "../styles/MainContent.module.css";
 import PropTypes from "prop-types";
-import moment from 'moment';
+import moment from "moment";
+import { Typography } from "@material-ui/core";
 
-moment.locale('id');
+moment.locale("id");
 
 function getSteps(data) {
-    const waktuMulai = [];
-    data['ListJadwal'].map((prop) => {
-        waktuMulai.push(prop['JamMulai'].concat(" - ", prop['NamaMK']));
-    });
+  const waktuMulai = [];
+  data["ListJadwal"].map((prop) => {
+    waktuMulai.push(prop["JamMulai"].concat(" - ", prop["NamaMK"]));
+  });
 
-    // console.log(waktuMulai);
+  // console.log(waktuMulai);
 
-    return waktuMulai; //ganti jadi jam di hari itu
+  return waktuMulai; //ganti jadi jam di hari itu
 }
 
 export default function MainContent({ data, token }) {
-
-  function getStepContent(step, data) { //step itu index
+  function getStepContent(step, data) {
+    //step itu index
     // ganti jadi main card yg dimunculin
 
-    return <MainCard data={data['ListJadwal'][step]} token={token} />
-}
+    return <MainCard data={data["ListJadwal"][step]} token={token} />;
+  }
 
-//   const classes = useStyles();
+  //   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState(new Set());
   const [skipped, setSkipped] = React.useState(new Set());
-  const steps = getSteps(data);
+  const isSuccess = data.success;
+  const dataSteps = data?.content ? data.content.data : {
+    ListJadwal: []
+  } 
+  const steps = getSteps(dataSteps);
 
   // steps.map((jamMulai, index) => {
   //   const jamMulaiObj = moment(jamMulai, 'HH:mm');
@@ -55,50 +60,52 @@ export default function MainContent({ data, token }) {
   function isStepComplete(step) {
     return completed.has(step);
   }
-
   return (
     <div className={styles.root}>
-      <Grid container direction='column' spacing={2}>
-        <Grid item>
-          <div className={styles.container}>
-            <Grid container direction='column' spacing={2}>
-              <Grid item>
-                {getStepContent(activeStep, data)}
+      {dataSteps.ListJadwal.length == 0 && (
+        <Typography align="center">Tidak ada jadwal hari ini!</Typography>
+      )}
+      {dataSteps.ListJadwal.length > 0 && (
+        <Grid container direction="column" spacing={2}>
+          <Grid item>
+            <div className={styles.container}>
+              <Grid container direction="column" spacing={2}>
+                <Grid item>{getStepContent(activeStep, data.content.data)}</Grid>
               </Grid>
-            </Grid>
-          </div>
-        </Grid>
+            </div>
+          </Grid>
 
-        <Grid item>
-            <Grid container direction='column' spacing={2}>
+          <Grid item>
+            <Grid container direction="column" spacing={2}>
               <Grid item>
                 <Stepper alternativeLabel nonLinear activeStep={activeStep}>
-                    {steps.map((label, index) => {
+                  {steps.map((label, index) => {
                     const stepProps = {};
                     const buttonProps = {};
                     //   if (isStepOptional(index)) {
                     //     buttonProps.optional = <Typography variant="caption">Optional</Typography>;
                     //   }
                     if (isStepSkipped(index)) {
-                        stepProps.completed = false;
+                      stepProps.completed = false;
                     }
                     return (
-                        <Step key={label} {...stepProps}>
+                      <Step key={label} {...stepProps}>
                         <StepButton
-                            onClick={handleStep(index)}
-                            completed={isStepComplete(index)}
-                            {...buttonProps}
+                          onClick={handleStep(index)}
+                          completed={isStepComplete(index)}
+                          {...buttonProps}
                         >
-                            {label}
+                          {label}
                         </StepButton>
-                        </Step>
+                      </Step>
                     );
-                    })}
+                  })}
                 </Stepper>
               </Grid>
             </Grid>
+          </Grid>
         </Grid>
-      </Grid>
+      )}
     </div>
   );
 }

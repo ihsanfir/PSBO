@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, yupToFormErrors } from "formik";
 import * as Yup from "yup";
 import { TextField, Select } from "formik-material-ui";
 import {
@@ -18,6 +18,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Autocomplete } from "formik-material-ui-lab";
 import axios from "axios";
+import { shape } from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   card_root: {
@@ -49,16 +50,16 @@ const listPlatform = [
   "Facetime",
 ];
 
-const VidconForm = ({ props, schedule, token })  => {
+const VidconForm = ({ props, schedule, token }) => {
   const classes = useStyles();
-  console.log(schedule)
+  // console.log(schedule);
   const courseCodeList = schedule.content.map((item) => {
     return {
       jadwalId: item.idJadwal,
       kode: item.kodeMatkul,
-      nama: item.namaMatkul + " - " + item.jenisKelas+item.paralel,
-    }
-  })
+      nama: item.namaMatkul + " - " + item.jenisKelas + item.paralel,
+    };
+  });
   const initialValues = {
     courseCode: "",
     link: "",
@@ -67,15 +68,18 @@ const VidconForm = ({ props, schedule, token })  => {
   };
 
   const validationSchema = Yup.object({
-    mataKuliah: Yup.object()
-      .nullable()
-      .required("kode mata kuliah wajib diisi!"),
-    link: Yup.string().required("link wajib diisi!"),
+    mataKuliah: Yup.object().nullable().required("mata kuliah wajib diisi!"),
+    link: Yup.string()
+      .matches(
+        /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm,
+        "masukan link yang benar!"
+      )
+      .required("link wajib diisi!"),
     platform: Yup.string().required("platform wajib diisi!"),
   });
 
   const handleAddVidcon = async (values, { setSubmitting }) => {
-    console.log(values);
+    // console.log(values);
     await axios
       .post(
         process.env.NEXT_PUBLIC_BACKEND_URL + "/link/vidcon",
@@ -92,11 +96,11 @@ const VidconForm = ({ props, schedule, token })  => {
         }
       )
       .then((response) => {
-        // setAlertMessage({ status: 'success', message: 'sukses brou' })
+        alert(response.data.message);
         console.log(response);
       })
       .catch((error) => {
-        // setAlertMessage({ status: 'error', message: 'error brou' })
+        alert(error.response.data.message);
         console.log(error.response);
       });
     setSubmitting(true);
@@ -109,8 +113,8 @@ const VidconForm = ({ props, schedule, token })  => {
     >
       {({ submitForm, isSubmitting }) => (
         <Card className={classes.formRecord}>
-          <Typography variant='h5'>Form Input Link Perkuliahan</Typography>
-          <br/>
+          <Typography variant="h5">Form Input Link Perkuliahan</Typography>
+          <br />
           <Form {...props}>
             <Grid
               container
@@ -196,8 +200,10 @@ const VidconForm = ({ props, schedule, token })  => {
                     name="platform"
                     fullWidth
                   >
-                    { listPlatform.map((platform) => (
-                      <MenuItem value={platform} key={platform}>{platform}</MenuItem>
+                    {listPlatform.map((platform) => (
+                      <MenuItem value={platform} key={platform}>
+                        {platform}
+                      </MenuItem>
                     ))}
                   </Field>
                 </Grid>

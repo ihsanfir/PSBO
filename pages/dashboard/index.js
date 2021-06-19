@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
       params: { tanggal: (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1) },
     }
   );
-  const { data } = await res.data.content;
+  const { data } = await res;
   return {
     props: { user, token, data }, // Will be passed to the page component as props
   };

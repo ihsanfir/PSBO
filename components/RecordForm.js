@@ -64,7 +64,12 @@ const RecordForm = ({ props, schedule, token }) => {
     mataKuliah: Yup.object()
       .nullable()
       .required("kode mata kuliah wajib diisi!"),
-    link: Yup.string().required("link wajib diisi!"),
+    link: Yup.string()
+      .matches(
+        /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm,
+        "masukan link yang benar!"
+      )
+      .required("link wajib diisi!"),
     meeting: Yup.string().required("pertemuan wajib diisi!"),
   });
 
@@ -92,11 +97,11 @@ const RecordForm = ({ props, schedule, token }) => {
         }
       )
       .then((response) => {
-        // setAlertMessage({ status: "success", message: "sukses brou" });
+        alert(response.data.message);
         console.log(response);
       })
       .catch((error) => {
-        // setAlertMessage({ status: "error", message: "error brou" });
+        alert(error.response.data.message);
         console.log(error.response);
       });
     setSubmitting(false);
@@ -110,8 +115,8 @@ const RecordForm = ({ props, schedule, token }) => {
     >
       {({ submitForm, isSubmitting }) => (
         <Card className={classes.formRecord}>
-          <Typography variant='h5'>Form Input Rekaman</Typography>
-          <br/>
+          <Typography variant="h5">Form Input Rekaman</Typography>
+          <br />
           <Form {...props}>
             <Grid
               container
